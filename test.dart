@@ -1,56 +1,46 @@
 import 'dart:io';
 
 void main() {
+  dynamic num;
   Calculator calc = Calculator();
-  calc.printValues();
+
+    print("Enter first operand or Enter 0 to exit:" );
+    int firstValue = int.parse(stdin.readLineSync().toString());
+    while (firstValue != 0) {
+    print("Enter operation:");
+    String? code = stdin.readLineSync();
+    print("Enter second operand:");
+    int secondValue = int.parse(stdin.readLineSync().toString());
+    switch (code) {
+      case '+':
+        num = calc.addition(firstValue, secondValue);
+        print("The answer is $num");
+        break;
+      case '-':
+        num = calc.subtraction(firstValue, secondValue);
+        print("The answer is $num");
+        break;
+      case '*':
+       num = calc.multiplication(firstValue, secondValue);
+        print("The answer is $num");
+        break;
+      case '/':
+       num = calc.division(firstValue, secondValue);
+        print("The answer is $num");
+        break;
+    }
+    print("enter first operand:");
+    firstValue = int.parse(stdin.readLineSync().toString());
+  }
 }
 
 class Calculator {
-  var num;
-  String addition(int num1, int num2) {
-    num = num1 + num2;
-    return "the answer is $num";
-  }
+  
+  int addition(int num1, int num2) => num1 + num2;
 
-  String subtraction(int num1, int num2) {
-    num = num1 - num2;
-    return "the answer is $num";
-  }
+  int subtraction(int num1, int num2) => num1 - num2;
 
-  String multiplication(int num1, int num2) {
-    num = num1 * num2;
-    return "the answer is $num";
-  }
+  int multiplication(int num1, int num2) => num1 * num2;
 
-  String division(int num1, int num2) {
-    num = num1 ~/ num2;
-    return "the answer is $num";
-  }
-
-  void printValues() {
-      print("Enter first operand:");
-    int firstValue = int.parse(stdin.readLineSync().toString());
-    while (firstValue != 0) {
-      print("Enter operation:");
-      String? code = stdin.readLineSync();
-      print("Enter second operand:");
-      int secondValue = int.parse(stdin.readLineSync().toString());
-      switch (code) {
-        case '+':
-          print(addition(firstValue, secondValue));
-          break;
-        case '-':
-          print(subtraction(firstValue, secondValue));
-          break;
-        case '*':
-          print(multiplication(firstValue, secondValue));
-          break;
-        case '/':
-          print(division(firstValue, secondValue));
-          break;
-      }
-      print("enter first operand:");
-      firstValue = int.parse(stdin.readLineSync().toString());
-    }
-  }
+  int division(int num1, int num2) => num1 ~/ num2;
 }
